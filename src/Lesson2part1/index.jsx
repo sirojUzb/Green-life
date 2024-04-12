@@ -11,3 +11,5 @@ function Function_Dec() {
 //   return <div>Hello(Arrow component)</div>;
 // };
 export default Function_Dec;
+// about Functional
+// 3types of Functional

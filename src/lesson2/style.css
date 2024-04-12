@@ -1,0 +1,19 @@
+.main_wrapper {
+  display: flex;
+  gap: 20px;
+}
+.flower_card {
+  width: 258px;
+  height: 300px;
+  border: 1px solid lightcyan;
+}
+.flower_wrapper {
+  height: 60%;
+  background: #fbfbfb;
+}
+.flower_image {
+  width: 100%;
+}
+.detail_wrapper {
+  padding: 20px;
+}
