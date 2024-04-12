@@ -25,7 +25,7 @@ class Lesson3part2 extends Component {
             this.setState({ name: event.target.value });
           }}
           type="text"
-          placeholder="input your name"
+          placeholder="input your Name"
         />
         <input
           onChange={(event) => {
@@ -33,7 +33,7 @@ class Lesson3part2 extends Component {
             this.setState({ surname: event.target.value });
           }}
           type="text"
-          placeholder="input your surname"
+          placeholder="input your Surname"
         />
         <h1>Name : {this.state.name}</h1>
         <h1>Surname: {this.state.surname}</h1>
