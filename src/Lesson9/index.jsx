@@ -13,7 +13,7 @@ function Lesson9() {
   };
   useEffect(() => {
     console.log("Count", count);
-  }, []);
+  }, [count]);
 
   return (
     <div className="w-[100wv] h-[100vh] flex items-center justify-center">
