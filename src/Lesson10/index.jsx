@@ -1,15 +1,23 @@
-// 25-daqiqa
 import { Button } from "antd";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { v4 } from "uuid";
 
 function index() {
   const timerRef = useRef(null);
+  const [millisecond, setMillisecond] = useState(0);
   const [second, setSecond] = useState(0);
   const [minute, setMinute] = useState(0);
   const [hour, setHour] = useState(0);
   const [running, setRunning] = useState(false);
   const [lap, setLap] = useState([]);
+
+  const changeMillisecond = (previous) => {
+    if (previous === 99) {
+      setSecond(changeSecond);
+      return 0;
+    }
+    return previous + 1;
+  };
 
   const changeSecond = (previous) => {
     if (previous === 59) {
@@ -18,29 +26,28 @@ function index() {
     }
     return previous + 1;
   };
-
   const changeMinute = (previous) => {
     if (previous === 59) {
       setHour((previous) => {
         return previous + 1;
       });
+      return 0;
     }
     return previous + 1;
   };
+
   useEffect(() => {
     if (running)
       timerRef.current = setInterval(() => {
-        setSecond((previous) => {
-          return previous + 1;
-        });
-      }, 1000);
+        setMillisecond(changeMillisecond);
+      }, 10);
     else clearInterval(timerRef.current);
   }, [running]);
-
   const reset = () => {
+    setMillisecond(0);
     setSecond(0);
     setMinute(0);
-    setHour(0);
+    setMinute(0);
   };
   const onLap = () => {
     setLap((previous) => {
@@ -50,6 +57,7 @@ function index() {
           hour,
           minute,
           second,
+          millisecond,
           id: v4(),
         },
       ];
@@ -57,13 +65,14 @@ function index() {
   };
 
   return (
-    <div id="main" className="flex items-center justify-center">
-      <div className="w-[500px] h-[500px] bg-orange-500 mt-[52px]">
-        <div className="flex justify-center gap-[10px] text-7xl w-full mt-[20px]">
-          <h3>{hour}</h3>:<h3>{minute}</h3>:<h3>{second}</h3>
+    <div className="flex items-center justify-center">
+      <div className="w-[500px] h-[500px] bg-green-500 mt-[52px]">
+        <div className="flex justify-center gap-[20px] text-7xl w-full mt-[20px]">
+          <h3>{hour}</h3>:<h3>{minute}</h3>:<h3>{second}</h3>:
+          <h3>{millisecond}</h3>
         </div>
         <div className="w-[80%] m-auto flex justify-between mt-[20px]">
-          <Button type="primary" onClick={onLap}>
+          <Button onClick={onLap} type="primary">
             Lap
           </Button>
           {running ? (
@@ -71,18 +80,10 @@ function index() {
           ) : (
             <Button onClick={() => setRunning(true)}>Start</Button>
           )}
-          <Button danger type="primary">
+
+          <Button onClick={reset} danger type="primary">
             Restart
           </Button>
-        </div>
-        <div className="w-full flex gap-4 flex-col items-center">
-          {lap.map(({ id, hour, minute, second }) => {
-            return (
-              <div key={id} className="flex">
-                <h3>{hour}</h3>:<h3>{minute}</h3>:<h3>{second}</h3>
-              </div>
-            );
-          })}
         </div>
       </div>
     </div>
@@ -90,3 +91,4 @@ function index() {
 }
 
 export default index;
+// 20-daqiqadan ko'r
