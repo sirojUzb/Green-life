@@ -37,7 +37,7 @@ const Dexample = () => {
           10 Slides
         </Button>{" "}
         <Button type="success" onClick={() => setNumberOfSlides(20)}>
-          20 Slides
+          30 Slides
         </Button>
       </div>
     </div>
@@ -45,3 +45,4 @@ const Dexample = () => {
 };
 
 export default Dexample;
+// work on it
