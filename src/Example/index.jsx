@@ -1,37 +1,47 @@
-import Slider from "react-slick";
+import { Carousel, Button, Card } from "antd";
+import { useState } from "react";
 
-function index() {
-  var settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToScroll: 4,
-    slidesToShow: 4,
-  };
+const SlideCarousel = (numberOfSlides) => {
+  // Generate slides based on the number received as a prop
+  const slides = Array.from(
+    { length: numberOfSlides },
+    (_, index) => index + 1
+  );
+
   return (
-    <div className="slider-container">
-      <Slider {...settings}>
-        <div>
-          <h3>1</h3>
+    <Carousel autoplay>
+      {slides.map((slide) => (
+        <div key={slide}>
+          <Card
+            style={{ width: "100%", height: "300px", backgroundColor: "green" }}
+          >
+            Slide {slide}
+          </Card>
         </div>
-        <div>
-          <h3>2</h3>
-        </div>
-        <div>
-          <h3>3</h3>
-        </div>
-        <div>
-          <h3>4</h3>
-        </div>
-        <div>
-          <h3>5</h3>
-        </div>
-        <div>
-          <h3>6</h3>
-        </div>
-      </Slider>
+      ))}
+    </Carousel>
+  );
+};
+
+const Dexample = () => {
+  const [numberOfSlides, setNumberOfSlides] = useState(5); // Initial number of slides
+
+  return (
+    <div>
+      <SlideCarousel numberOfSlides={numberOfSlides} />
+      <div style={{ marginTop: "20px" }}>
+        <Button type="primary" onClick={() => setNumberOfSlides(5)}>
+          5 Slides
+        </Button>{" "}
+        <Button type="default" onClick={() => setNumberOfSlides(10)}>
+          10 Slides
+        </Button>{" "}
+        <Button type="success" onClick={() => setNumberOfSlides(20)}>
+          20 Slides
+        </Button>
+      </div>
     </div>
   );
-}
+};
 
-export default index;
+export default Dexample;
