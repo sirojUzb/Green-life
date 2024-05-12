@@ -1,6 +1,7 @@
 import { Button } from "antd";
 import { useEffect, useState, useRef } from "react";
 import { v4 } from "uuid";
+import "./style.css";
 
 function index() {
   const timerRef = useRef(null);
@@ -65,13 +66,13 @@ function index() {
   };
 
   return (
-    <div className="flex items-center justify-center">
-      <div className="w-[500px] h-[500px] bg-green-500 mt-[52px]">
-        <div className="flex justify-center gap-[20px] text-7xl w-full mt-[20px]">
+    <div className="main_wrapper">
+      <div className="timer_wrapper">
+        <div className="timer_text">
           <h3>{hour}</h3>:<h3>{minute}</h3>:<h3>{second}</h3>:
           <h3>{millisecond}</h3>
         </div>
-        <div className="w-[80%] m-auto flex justify-between mt-[20px]">
+        <div className="timer_lap">
           <Button onClick={onLap} type="primary">
             Lap
           </Button>
@@ -84,6 +85,17 @@ function index() {
           <Button onClick={reset} danger type="primary">
             Restart
           </Button>
+        </div>
+        <div className="timer_reset">
+          {lap.map(({ id, hour, minute, second, millisecond }) => {
+            return (
+              <div key={id} className="timer_reset_item">
+                <h3>{hour}</h3>:<h3>{minute}</h3>:<h3>{second}</h3>:
+                <h3>{millisecond}</h3>
+              </div>
+            );
+          })}
+          {lap?.length && <Button>Reset</Button>}
         </div>
       </div>
     </div>
