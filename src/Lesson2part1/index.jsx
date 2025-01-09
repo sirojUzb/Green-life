@@ -2,11 +2,11 @@
 function Function_Dec() {
   return <div>Hello (Decloration component)</div>;
 }
-// // Expression
+// Expression
 // const Function_Exp = function () {
 //   return <div>Hello(Expression component)</div>;
 // };
-// // Arrow
+// Arrow
 // const Function_Arr = () => {
 //   return <div>Hello(Arrow component)</div>;
 // };

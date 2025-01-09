@@ -8,8 +8,9 @@ import { Component } from "react";
 // import Lesson5 from "./Lesson5/lesson5";
 // import Lesson5ANTD from "./Lesson5ANTD";
 // import Lesson10 from "./Lesson10";
-// import Example from "./Example";
-import Lesson11 from "./Lesson11";
+// import Lesson11 from "./Lesson11";
+import Lesson12 from "./Lesson12";
+import "./style.css";
 
 class App extends Component {
   render() {
@@ -24,8 +25,8 @@ class App extends Component {
         {/* <Lesson6 /> */}
         {/* <Lesson9 /> */}
         {/* <Lesson10 /> */}
-        {/* <Example /> */}
-        <Lesson11 />
+        <Lesson12 />
+        {/* <Lesson11 /> */}
       </div>
     );
   }
